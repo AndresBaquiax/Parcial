@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Biblioteca</title>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Menú</h2>
+        <a href="parcial.html">Biblioteca</a>
+        <a href="infoestudiante.html">Informacion</a>
+        <a href="carnet.html">Carnet</a>
+        <a href="semestre.html">Semestre</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <header>
+            <p>Diego Andres Baquiax Barrios - 202108036</p>
+            <img src="imagenmeso.jpg" alt="Logo de la biblioteca">
+            <h1>Biblioteca - Universidad Mesoamericana</h1>
+        </header>
+        <h1 id="informacion">Información:</h1>
+        <div class="div_formulario">
+            <form id="datosFormulario">
+                <label for="nombre_libro">Ingrese el nombre del libro:</label>
+                <input type="text" id="nombre_libro" placeholder="Ingrese el nombre del libro" required>
+                <br>
+                <label for="fecha_publicacion">Fecha de publicación del libro:</label>
+                <input type="date" id="fecha_publicacion" required>
+                <br>
+                <label for="genero">Seleccione el género literario del libro:</label>
+                <br>
+                <input type="radio" id="genero1" name="genero" value="Ciencia Ficción"> Ciencia Ficción
+                <br>
+                <input type="radio" id="genero2" name="genero" value="Terror"> Terror
+                <br>
+                <input type="radio" id="genero3" name="genero" value="Romance"> Romance
+                <br>
+                <input type="radio" id="genero4" name="genero" value="Aventura"> Aventura
+                <br>
+                <input type="radio" id="genero5" name="genero" value="Fantasía"> Fantasía
+                <br>
+                <label for="costo">Costo del libro en Biblioteca:</label>
+                <input type="number" id="costo" placeholder="Ingrese el costo del libro" required>
+                <br>
+                <label for="nombre_autor">Ingrese el nombre del autor:</label>
+                <input type="text" id="nombre_autor" placeholder="Ingrese el nombre del autor" required>
+                <br>
+                <label for="codigo_barras">Ingrese el código de barras del libro:</label>
+                <input type="text" id="codigo_barras" placeholder="Ingrese el código de barras" required>
+                <br>
+                <label for="editorial">Seleccione la editorial:</label>
+                <br>
+                <input type="radio" id="editorial1" name="editorial" value="Planeta"> Planeta
+                <br>
+                <input type="radio" id="editorial2" name="editorial" value="Santillana"> Santillana
+                <br>
+                <input type="radio" id="editorial3" name="editorial" value="Oceano"> Oceano
+                <br>
+                <input type="radio" id="editorial4" name="editorial" value="Norma"> Norma
+                <br>
+                <input type="radio" id="editorial5" name="editorial" value="Alfaguara"> Alfaguara
+                <br>
+                <button type="submit" id="enviar">Enviar</button>
+            </form>
+        </div>
+        <br>
+        <div>
+            <h3 id="tablaLibros">Tabla de libros</h3>
+            <table id="tabla">
+                <thead>
+                    <tr>
+                        <th>Nombre del libro</th>
+                        <th>Fecha de publicación</th>
+                        <th>Género</th>
+                        <th>Costo</th>
+                        <th>Nombre del autor</th>
+                        <th>Código de barras</th>
+                        <th>Editorial</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <script>
+            document.getElementById("datosFormulario").addEventListener("submit", function(event) {
+                event.preventDefault();
+                const nombre_libro = document.getElementById("nombre_libro").value;
+                const fecha_publicacion = document.getElementById("fecha_publicacion").value;
+                const genero = document.querySelector('input[name="genero"]:checked').value;
+                const costo = document.getElementById("costo").value;
+                const nombre_autor = document.getElementById("nombre_autor").value;
+                const codigo_barras = document.getElementById("codigo_barras").value;
+                const editorial = document.querySelector('input[name="editorial"]:checked').value;
+
+                let table = document.getElementById('tabla').getElementsByTagName('tbody')[0];
+
+                const nuevaFila = table.insertRow();
+                let casillaNombreLibro = nuevaFila.insertCell(0);
+                let casillaFecha = nuevaFila.insertCell(1);
+                let casillaGenero = nuevaFila.insertCell(2);
+                let casillaCosto = nuevaFila.insertCell(3);
+                let casillaNombreAutor = nuevaFila.insertCell(4);
+                let casillaCodigoBarras = nuevaFila.insertCell(5);
+                let casillaEditorial = nuevaFila.insertCell(6);
+
+                casillaNombreLibro.textContent = nombre_libro;
+                casillaFecha.textContent = fecha_publicacion;
+                casillaGenero.textContent = genero;
+                casillaCosto.textContent = costo;
+                casillaNombreAutor.textContent = nombre_autor;
+                casillaCodigoBarras.textContent = codigo_barras;
+                casillaEditorial.textContent = editorial;
+                document.getElementById('datosFormulario').reset();
+            });
+        </script>
+    </div>
+    <footer id="footer">
+        <p>Página de <a href="https://www.mesoamericana.edu.gt/" target="_blank">Universidad Mesoamericana</a></p>
+    </footer>
+</body>
+</html>
